@@ -1,16 +1,16 @@
 package ToyProject.Login.loadgenerator;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashSet;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LoadServiceImpl implements LoadService{
     @Override
     public void loadGenerator() {
-        Map<Long, Long> map = new ConcurrentHashMap<>();
+        HashSet<Integer> set = new HashSet<>();
 
-        for (long i = 0; i <1000000; i++)
-            map.put(i, i);
+        for (int i = 0; i < 1000000; i++) {
+            set.add(i);
+        }
     }
 }
