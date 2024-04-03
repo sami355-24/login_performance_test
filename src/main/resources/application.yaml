@@ -1,0 +1,97 @@
+spring:
+  application:
+    name: login
+
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/performance_test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+      hibernate:
+        format_sql: true
+
+
+logging.level:
+  org.hibernate.SQL: debug
+
+---
+
+spring:
+  application:
+    name: login
+
+  config:
+    activate:
+      on-profile: interceptor
+
+  datasource:
+    url: http://interceptor-db:8082
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+      hibernate:
+        format_sql: true
+
+
+logging.level:
+  org.hibernate.SQL: debug
+
+---
+
+spring:
+  application:
+    name: login
+
+  config:
+    activate:
+      on-profile: security-session
+
+  datasource:
+    url: http://security-session-db:8082
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+      hibernate:
+        format_sql: true
+
+
+logging.level:
+  org.hibernate.SQL: debug
+
+---
+
+spring:
+  application:
+    name: login
+
+  config:
+    activate:
+      on-profile: security-jwt
+
+  datasource:
+    url: http://security-jwt:8082
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+      hibernate:
+        format_sql: true
+
+
+logging.level:
+  org.hibernate.SQL: debug
