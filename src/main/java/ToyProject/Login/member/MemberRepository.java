@@ -1,10 +1,6 @@
 package ToyProject.Login.member;
 
-public interface MemberRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-    boolean isExist(Member member);
-
-    void join(Member newMember);
-
-    Member findById(String memberId);
+public interface MemberRepository extends JpaRepository<Member, String> {
 }
