@@ -3,6 +3,7 @@ package ToyProject.Login.login;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/login")
 public class LoginController {
 
-    private final String SESSION = "MEMBER_SESSION";
+    public static final String SESSION = "MEMBER_SESSION";
     private final LoginService loginService;
 
     @PostMapping
@@ -23,4 +24,5 @@ public class LoginController {
         httpSession.setMaxInactiveInterval(3600);
         return ResponseEntity.ok().build();
     }
+
 }
