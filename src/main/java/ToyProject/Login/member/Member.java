@@ -21,7 +21,7 @@ public class Member {
     @GeneratedValue(strategy = AUTO)
     private String id;
 
-    private String name;
+    private String email;
 
     private String password;
 }
