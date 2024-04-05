@@ -3,10 +3,12 @@ package ToyProject.Login.global.redis;
 import ToyProject.Login.global.SessionService;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 @RequiredArgsConstructor
 public class RedisService implements SessionService {
 
@@ -15,6 +17,7 @@ public class RedisService implements SessionService {
 
     public void insertSession(String sessionId){
         redisTemplate.opsForValue().set(sessionId, LocalDateTime.now(), SESSION_TIME_OUT);
+        log.info("sessionId = {}", sessionId);
     }
 
     public boolean isExist(String sessionId){

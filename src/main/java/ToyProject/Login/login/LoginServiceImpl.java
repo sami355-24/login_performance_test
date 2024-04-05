@@ -16,10 +16,15 @@ public class LoginServiceImpl implements LoginService{
 
     @Override
     public String login(String email, String password) {
-        memberRepository.existsByEmailAndPassword(email, password).orElseThrow(RuntimeException::new);
+        isExists(email, password);
         String sessionId = generateSessionId();
         sessionService.insertSession(sessionId);
         return sessionId;
+    }
+
+    private void isExists(String email, String password) {
+        if(!memberRepository.existsByEmailAndPassword(email, password))
+            throw new RuntimeException();
     }
 
     private String generateSessionId(){
