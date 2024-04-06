@@ -17,9 +17,12 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
         String sessionId = (String) request.getSession().getAttribute(SESSION);
-        if(redisService.isExist(sessionId))
+        if(sessionId != null && redisService.isExist(sessionId))
             return true;
 
+        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        response.getWriter().write("Permission required.");
+        response.getWriter().flush();
         return false;
     }
 }
