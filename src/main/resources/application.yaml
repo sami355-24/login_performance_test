@@ -1,10 +1,15 @@
-server:
-  servlet:
-    session:
-      cookie:
-        name: JSESSIONID
-
 spring:
+  profiles:
+    active: local
+
+---
+
+#로컬
+spring:
+  config:
+    activate:
+      on-profile: local
+
   application:
     name: login
 
@@ -27,11 +32,82 @@ spring:
 
   jpa:
     hibernate:
+      ddl-auto: create-drop
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      mode: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  servlet:
+    session:
+      cookie:
+        name: JSESSIONID
+
+logging.level:
+  org.hibernate.SQL: debug
+
+
+
+---
+#도커
+
+spring:
+  config:
+    activate:
+      on-profile: interceptor
+
+  application:
+    name: login
+
+    session:
+      store-type: redis
+      redis:
+        namespace: shboard:session
+
+    data:
+      redis:
+        host: localhost
+        password:
+        port: 6379
+
+  datasource:
+    url: jdbc:mariadb://mariadb:3306/performance_test
+    username: sami355
+    password: 1234
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    hibernate:
       ddl-auto: update
       hibernate:
         format_sql: true
 
+  sql:
+    init:
+      mode: always
 
 logging.level:
   org.hibernate.SQL: debug
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  servlet:
+    session:
+      cookie:
+        name: JSESSIONID
 
