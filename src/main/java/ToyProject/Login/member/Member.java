@@ -13,12 +13,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
     private String id;
 
     private String email;
