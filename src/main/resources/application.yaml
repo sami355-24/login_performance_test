@@ -47,6 +47,10 @@ management:
         include: "*"
 
 server:
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
   servlet:
     session:
       cookie:
@@ -95,10 +99,6 @@ spring:
     init:
       mode: always
 
-logging.level:
-  org.hibernate.SQL: debug
-
-
 management:
   endpoints:
     web:
@@ -106,8 +106,14 @@ management:
         include: "*"
 
 server:
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
   servlet:
     session:
       cookie:
         name: JSESSIONID
 
+logging.level:
+  org.hibernate.SQL: debug
