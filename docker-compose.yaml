@@ -6,8 +6,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: 1
-          memory: 1
+          cpus: "1"
+          memory: "1g"
 
     ports:
       - "3306:3306"
@@ -22,8 +22,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: 1
-          memory: 1
+          cpus: "1"
+          memory: "1g"
 
     ports:
       - "8080:8080"
