@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/login")
+@RequestMapping("/auth")
 public class LoginController {
 
     public static final String SESSION = "MEMBER_SESSION";
     private final LoginService loginService;
 
-    @PostMapping
+    @PostMapping("/login")
     public ResponseEntity<Void> Login(@RequestBody LoginDto loginDto, HttpSession httpSession){
         String sessionId = loginService.login(loginDto.email(), loginDto.password());
         httpSession.setAttribute(SESSION, sessionId);
