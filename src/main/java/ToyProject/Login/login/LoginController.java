@@ -24,4 +24,10 @@ public class LoginController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(HttpSession httpSession){
+        loginService.logout((String) httpSession.getAttribute(SESSION));
+        httpSession.invalidate();
+        return ResponseEntity.ok().build();
+    }
 }
