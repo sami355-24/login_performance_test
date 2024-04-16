@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  controller:
+    image: ngrinder/controller
+    container_name: controller
+    volumes:
+      - "~/ngrinder-controller:/opt/ngrinder-controller"
+    ports:
+      - "80:80"
+      - "16001:16001"
+      - "12000-12009:12000-12009"
+
+  agent:
+    image: ngrinder/agent
+    container_name: agent
+    depends_on:
+      - controller
+
