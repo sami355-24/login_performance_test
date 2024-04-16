@@ -13,13 +13,14 @@ public class LoadController {
 
     private final LoadService service;
 
-    @GetMapping("/load")
-    public void startLoad(){
+    @GetMapping("/real")
+    public ResponseEntity<String> startLoad(){
         service.loadGenerator();
+        return ResponseEntity.ok().body("ok");
     }
 
 
-    @GetMapping("/simple")
+    @GetMapping("/fake")
     public ResponseEntity<String> starLoad(){
         return ResponseEntity.ok().body("ok");
     }
