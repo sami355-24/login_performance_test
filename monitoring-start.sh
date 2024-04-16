@@ -4,7 +4,6 @@ docker compose -f docker-compose-springboot-mariadb.yaml build --no-cache
 # 스프링부트, 마리아디비 실행
 docker compose -f docker-compose-springboot-mariadb.yaml up -d
 echo "Docker compose started and sleeping for 40 seconds..."
-sleep 40
 
 # 프로메테우스, 그라파나 실행
 cd /Users/sangmin/Local/prometheus-2.51.1.darwin-amd64 || exit
