@@ -4,8 +4,10 @@ import ToyProject.Login.global.SessionService;
 import ToyProject.Login.member.MemberRepository;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class LoginServiceImpl implements LoginService{
@@ -23,6 +25,7 @@ public class LoginServiceImpl implements LoginService{
     }
 
     private void isExists(String email, String password) {
+        log.info("email = {}, password = {}", email, password);
         if(!memberRepository.existsByEmailAndPassword(email, password))
             throw new RuntimeException();
     }
