@@ -3,9 +3,11 @@ package ToyProject.Login.security.userDetails;
 import ToyProject.Login.login.LoginDto;
 import java.util.Collection;
 import java.util.List;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+@Data
 public class MemberDetails implements UserDetails {
 
     private final LoginDto loginDto;
