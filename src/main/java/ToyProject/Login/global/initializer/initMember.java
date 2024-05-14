@@ -4,6 +4,7 @@ import ToyProject.Login.member.Member;
 import ToyProject.Login.member.MemberRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 public class initMember {
 
     private final MemberRepository memberRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void insertMember() {
@@ -18,7 +20,7 @@ public class initMember {
             memberRepository.save(Member.builder()
                     .id("user" + i)
                     .email("user" + i + "@test.com")
-                    .password("1234")
+                    .password(passwordEncoder.encode("1234"))
                     .build());
         }
     }
