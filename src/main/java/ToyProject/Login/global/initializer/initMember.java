@@ -21,6 +21,7 @@ public class initMember {
                     .id("user" + i)
                     .email("user" + i + "@test.com")
                     .password(passwordEncoder.encode("1234"))
+                            .roles("ROLE_USER")
                     .build());
         }
     }
