@@ -5,10 +5,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -18,6 +20,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 
+    private final AuthenticationProvider restAuthenticationProvider;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
@@ -26,20 +30,23 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login").permitAll()
-                        .requestMatchers("auth/logout", "/load/fake", "load/real").hasAnyRole("USER")
+                        .requestMatchers("/auth/logout", "/load/fake", "/load/real").hasAnyRole("USER")
                         .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)
+                .cors(AbstractHttpConfigurer::disable)
+                .formLogin(AbstractHttpConfigurer::disable)
                 .addFilterBefore(
-                        restAuthenticationFilter(authenticationManager),
+                        restAuthenticationFilter(http, authenticationManager),
                         UsernamePasswordAuthenticationFilter.class)
+                .authenticationProvider(restAuthenticationProvider)
                 .authenticationManager(authenticationManager);
 
         return http.build();
     }
 
-    private RestAuthenticationFilter restAuthenticationFilter(AuthenticationManager authenticationManager) {
-        RestAuthenticationFilter restAuthenticationFilter = new RestAuthenticationFilter();
+    private RestAuthenticationFilter restAuthenticationFilter(HttpSecurity http, AuthenticationManager authenticationManager) {
+        RestAuthenticationFilter restAuthenticationFilter = new RestAuthenticationFilter(http);
         restAuthenticationFilter.setAuthenticationManager(authenticationManager);
         return restAuthenticationFilter;
     }
