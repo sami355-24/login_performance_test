@@ -50,3 +50,7 @@ server:
 
 logging.level:
   org.hibernate.SQL: debug
+
+jwt:
+  secret_key: login_performance_test
+  access_token_validity: 1800
