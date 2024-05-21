@@ -1,14 +1,15 @@
 package ToyProject.Login.security.jwtUtil;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
+import java.security.Key;
 import java.util.Date;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-@Slf4j
 public class JwtUtil {
 
     @Value("${jwt.secret_key}")
@@ -17,14 +18,22 @@ public class JwtUtil {
     @Value("${jwt.access_token_validity}")
     private int ACCESS_TOKEN_VALIDITY;
 
+    private Key key;
+
+    @PostConstruct
+    public void initJwtUtil(){
+        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        this.key = Keys.hmacShaKeyFor(keyBytes);
+    }
+
     //액세스 토큰 생성
     public String generateAccessToken(String memberEmail, String role) {
         return Jwts.builder()
-                .setSubject(memberEmail)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY))
+                .subject(memberEmail)
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY))
                 .claim("roles", role)
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .signWith(key)
                 .compact();
     }
 
