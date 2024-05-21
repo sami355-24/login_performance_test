@@ -1,8 +1,8 @@
 package ToyProject.Login.login;
 
-import ToyProject.Login.member.Member;
+import java.util.Map;
 
 public interface LoginService {
 
-    public String issueAccessToken(LoginDto loginDto);
+    public Map<String, String> issueAccessToken(LoginDto loginDto);
 }
