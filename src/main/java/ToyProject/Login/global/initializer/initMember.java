@@ -19,6 +19,7 @@ public class initMember {
                     .id("user" + i)
                     .email("user" + i + "@test.com")
                     .password("1234")
+                    .role("ROLE_USER")
                     .build());
         }
     }
