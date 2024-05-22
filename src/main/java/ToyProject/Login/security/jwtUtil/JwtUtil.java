@@ -4,17 +4,15 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.Jwts.SIG;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import io.jsonwebtoken.security.MacAlgorithm;
 import jakarta.annotation.PostConstruct;
 import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
-import javax.crypto.spec.SecretKeySpec;
+import javax.crypto.SecretKey;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -31,16 +29,12 @@ public class JwtUtil {
     private int ACCESS_TOKEN_VALIDITY;
 
     private Key key;
-    private MacAlgorithm sa;
     private JwtParser jwtParser;
 
     @PostConstruct
     public void initJwtUtil() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
-        this.key = Keys.hmacShaKeyFor(keyBytes);
-        this.sa = SIG.HS256;
-        SecretKeySpec secretKeySpec = new SecretKeySpec(keyBytes, sa.getId());
-        this.jwtParser = Jwts.parser().verifyWith(secretKeySpec).build();
+        this.key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET_KEY));
+        this.jwtParser = Jwts.parser().verifyWith((SecretKey) this.key).build();
     }
 
     public Claims extractAllClaims(String token) {
@@ -56,7 +50,7 @@ public class JwtUtil {
         return Jwts.builder()
                 .subject(memberEmail)
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY))
+                .expiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY * 1000L))
                 .claim("roles", role)
                 .signWith(key)
                 .compact();
@@ -85,7 +79,7 @@ public class JwtUtil {
             isValid = false;
         }
 
-        if (isValid) {
+        if (!isValid) {
             throw new BadCredentialsException("토큰 검증에 실패하였습니다.");
         }
     }
