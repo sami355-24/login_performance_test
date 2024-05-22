@@ -20,7 +20,7 @@ public class JwtFilter extends AbstractAuthenticationProcessingFilter {
         super(new NegatedRequestMatcher(
                 new OrRequestMatcher(
                         new AntPathRequestMatcher("/auth/login", "POST"),
-                        new AntPathRequestMatcher("/actuator", "GET")
+                        new AntPathRequestMatcher("/actuator/**", "GET")
                 )));
     }
 
