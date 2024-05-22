@@ -48,3 +48,50 @@ logging.level:
 jwt:
   secret_key: IHxW0Ai0xb4n9dSA6XlUq8Bkrl+JVB2HvFqxKyQbHJM=
   access_token_validity: 1800
+
+---
+
+#도커
+spring:
+  config:
+    activate:
+      on-profile: security-jwt
+
+  application:
+    name: login
+
+  datasource:
+    url: jdbc:mariadb://mariadb:3306/performance_test
+    username: sami355
+    password: 1234
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      mode: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
+  port: 8081
+
+logging.level:
+  org.hibernate.SQL: debug
+
+jwt:
+  secret_key: IHxW0Ai0xb4n9dSA6XlUq8Bkrl+JVB2HvFqxKyQbHJM=
+  access_token_validity: 1800
