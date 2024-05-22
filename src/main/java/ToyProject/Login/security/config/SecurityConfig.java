@@ -32,7 +32,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/auth/login", "/actuator/**").permitAll()
                         .requestMatchers("/auth/logout", "/load/fake", "/load/real").hasAnyRole("USER")
                         .anyRequest().authenticated()
                 )
