@@ -1,5 +1,6 @@
 package ToyProject.Login.security.jwtUtil;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
@@ -11,8 +12,8 @@ import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.MacAlgorithm;
 import jakarta.annotation.PostConstruct;
 import java.security.Key;
-import java.security.SignatureException;
 import java.util.Date;
+import java.util.function.Function;
 import javax.crypto.spec.SecretKeySpec;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,14 +32,24 @@ public class JwtUtil {
 
     private Key key;
     private MacAlgorithm sa;
-    private SecretKeySpec secretKeySpec;
+    private JwtParser jwtParser;
 
     @PostConstruct
     public void initJwtUtil() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         this.key = Keys.hmacShaKeyFor(keyBytes);
         this.sa = SIG.HS256;
-        this.secretKeySpec = new SecretKeySpec(keyBytes, sa.getId());
+        SecretKeySpec secretKeySpec = new SecretKeySpec(keyBytes, sa.getId());
+        this.jwtParser = Jwts.parser().verifyWith(secretKeySpec).build();
+    }
+
+    public Claims extractAllClaims(String token) {
+        return (Claims) jwtParser.parse(token).getPayload();
+    }
+
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = extractAllClaims(token);
+        return claimsResolver.apply(claims);
     }
 
     public String generateAccessToken(String memberEmail, String role) {
@@ -52,11 +63,6 @@ public class JwtUtil {
     }
 
     public void validateToken(String token) {
-        JwtParser jwtParser = Jwts
-                .parser()
-                .verifyWith(secretKeySpec)
-                .build();
-
         parseToken(token, jwtParser);
     }
 
