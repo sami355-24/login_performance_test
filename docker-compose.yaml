@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "1g"
+
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    environment:
+      TZ: Asia/Seoul
+
+  security-jwt:
+    container_name: security-jwt
+    build: .
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "1g"
+
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mariadb
