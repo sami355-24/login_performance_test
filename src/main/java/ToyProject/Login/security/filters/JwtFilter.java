@@ -12,11 +12,16 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
+import org.springframework.security.web.util.matcher.OrRequestMatcher;
 
 public class JwtFilter extends AbstractAuthenticationProcessingFilter {
 
     public JwtFilter() {
-        super(new NegatedRequestMatcher(new AntPathRequestMatcher("/auth/login", "POST")));
+        super(new NegatedRequestMatcher(
+                new OrRequestMatcher(
+                        new AntPathRequestMatcher("/auth/login", "POST"),
+                        new AntPathRequestMatcher("/actuator", "GET")
+                )));
     }
 
     @Override

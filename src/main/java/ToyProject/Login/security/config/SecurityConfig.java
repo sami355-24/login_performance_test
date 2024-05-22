@@ -35,7 +35,6 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth ->
                         auth
-                                .requestMatchers("/auth/login").permitAll()
                                 .requestMatchers("load/real", "load/fake").hasRole("USER")
                                 .anyRequest().permitAll()
                 )
