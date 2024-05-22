@@ -1,17 +1,16 @@
 package ToyProject.Login.security.userDetails;
 
-import ToyProject.Login.login.LoginDto;
 import java.util.Collection;
 import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class MemberDetails implements UserDetails {
-    private LoginDto loginDto;
+    private String memberEmail;
     private List<GrantedAuthority> roles;
 
-    public MemberDetails(LoginDto loginDto, List<GrantedAuthority> roles) {
-        this.loginDto = loginDto;
+    public MemberDetails(String memberEmail, List<GrantedAuthority> roles) {
+        this.memberEmail = memberEmail;
         this.roles = roles;
     }
 
@@ -22,12 +21,12 @@ public class MemberDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return loginDto.getPassword();
+        return null;
     }
 
     @Override
     public String getUsername() {
-        return loginDto.getEmail();
+        return this.memberEmail;
     }
 
     @Override
