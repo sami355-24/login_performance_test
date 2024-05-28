@@ -14,7 +14,7 @@ public class initMember {
 
     @PostConstruct
     public void insertMember() {
-        for (int i = 1; i < 2; i++) {
+        for (int i = 1; i < 51; i++) {
             memberRepository.save(Member.builder()
                     .id("user" + i)
                     .email("user" + i + "@test.com")
