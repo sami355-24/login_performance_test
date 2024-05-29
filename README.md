@@ -12,4 +12,10 @@
 
 테스팅 툴로는 **gatling**을 사용하였으며 그에 따른 결과는 [여기서](https://github.com/sami355-24/login_performance_test/tree/main/results) 확인 가능합니다. 
 <br>
-++ 5개의 폴더중 확인을 원하시는 폴더 전체를 다운받으시고 index.html을 열면 결과를 자세하게 확인 가능합니다.
+++ 5개의 폴더중 확인을 원하시는 폴더 전체를 다운받으시고 index.html을 열면..
+<img width="1278" alt="image" src="https://github.com/sami355-24/login_performance_test/assets/72246411/5b4c48ca-7dee-4e8a-99e3-3d0b96218a84">
+
+결과를 자세하게 확인 가능합니다.
+
+<br>
+자세한 내용은 https://goto-pangyo.tistory.com/279 제 블로그에 작성해놓았습니다.
