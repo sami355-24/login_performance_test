@@ -13,13 +13,13 @@
 </div>
 
 
-1️⃣ [테스트 시나리오](https://github.com/sami355-24/login_performance_test#-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4)
+1️⃣ [테스트 시나리오](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4)
 
-2️⃣ [아키텍처](https://github.com/sami355-24/login_performance_test#-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98)
+2️⃣ [아키텍처](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98)
 
-3️⃣ [컨테이너 스펙](https://github.com/sami355-24/login_performance_test#-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%8A%A4%ED%8E%99)
+3️⃣ [컨테이너 스펙](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%8A%A4%ED%8E%99)
 
-4️⃣ [기술 스택](https://github.com/sami355-24/login_performance_test#%EF%B8%8F-%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D)
+4️⃣ [기술 스택](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#%EF%B8%8F-%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D)
 
 5️⃣ [결과](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#-%EA%B2%B0%EA%B3%BC)
 
