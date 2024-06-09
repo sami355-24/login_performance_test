@@ -12,6 +12,12 @@
 
 </div>
 
+<br>
+
+> 💡 gatling 실험 결과는 [📊 결과](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#-%EA%B2%B0%EA%B3%BC)의 **상세내용**에서 아래와 같이 직접 확인하실 수 있습니다.
+
+![무제](https://github.com/sami355-24/login_performance_test/assets/72246411/ebb54472-d77e-4013-beb9-564126bb5fd2)
+
 
 1️⃣ [테스트 시나리오](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4)
 
@@ -77,6 +83,21 @@
 |**단순 요청 시나리오**|**인터셉터**|약 1%| 365.6MB|약 98%|98%|5126ms|9629|1878.4|
 ||**시큐리티(세션)**|약 1%|213MB|20%|98.25%|9418ms|216|22.9|
 ||**시큐리티(jwt)**|약 1%|365MB|96%|100%|6535ms|9990|1528.6|
+
+**상세내용**
+<details>
+  <summary>펼치기/접기</summary>
+  
+|**시나리오**|**구현 방법**|첫번째 시도|두번째 시도|세번째 시도|네번째 시도|다섯번째 시도|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|**로그인 시나리오**|**인터셉터**|[링크](https://sami355-24.github.io/1.login-scenario/interceptor/loginperformance-20240524093503021/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/interceptor/loginperformance-20240524093854292/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/interceptor/loginperformance-20240524094241975/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/interceptor/loginperformance-20240524094615564/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/interceptor/loginperformance-20240524094907469/index.html)|
+||**시큐리티(세션)**|[링크](https://sami355-24.github.io/1.login-scenario/security-session-redis/loginperformance-20240525085616000/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/security-session-redis/loginperformance-20240525085834118/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/security-session-redis/loginperformance-20240525090027782/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/security-session-redis/loginperformance-20240525090233233/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/security-session-redis/loginperformance-20240525090506210/index.html)|
+||**시큐리티(jwt)**|[링크](https://sami355-24.github.io/1.login-scenario/security-jwt/loginperformance-20240528134728246/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/security-jwt/loginperformance-20240528134909086/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/security-jwt/loginperformance-20240528135054222/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/security-jwt/loginperformance-20240528135233369/index.html)|[링크](https://sami355-24.github.io/1.login-scenario/security-jwt/loginperformance-20240528135409854/index.html)|
+|**단순 요청 시나리오**|**인터셉터**|[링크](https://sami355-24.github.io/2.simple-request-scenario/interceptor/loginperformance-20240528150204845/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/interceptor/loginperformance-20240528150402839/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/interceptor/loginperformance-20240528150616182/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/interceptor/loginperformance-20240528150901403/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/interceptor/loginperformance-20240528151109983/index.html)|
+||**시큐리티(세션)**|[링크](https://sami355-24.github.io/2.simple-request-scenario/security-session-redis/loginperformance-20240529063351274/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/security-session-redis/loginperformance-20240529063559827/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/security-session-redis/loginperformance-20240529063824110/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/security-session-redis/loginperformance-20240529064050205/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/security-session-redis/loginperformance-20240529064309644/index.html)|
+||**시큐리티(jwt)**|[링크](https://sami355-24.github.io/2.simple-request-scenario/security-jwt/loginperformance-20240529074825031/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/security-jwt/loginperformance-20240529075034796/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/security-jwt/loginperformance-20240529075242557/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/security-jwt/loginperformance-20240529075501689/index.html)|[링크](https://sami355-24.github.io/2.simple-request-scenario/security-jwt/loginperformance-20240529075717327/index.html)|
+       
+</details>
 
 ---
 
