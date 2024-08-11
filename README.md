@@ -31,7 +31,9 @@
 
 6️⃣ [정리](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#%EF%B8%8F-%EC%A0%95%EB%A6%AC)
 
-7️⃣ [관련 링크](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#%EF%B8%8F-%EA%B4%80%EB%A0%A8-%EB%A7%81%ED%81%AC)
+7️⃣ 
+
+8️⃣ [관련 링크](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#%EF%B8%8F-%EA%B4%80%EB%A0%A8-%EB%A7%81%ED%81%AC)
 
 ---
 
@@ -62,14 +64,14 @@
 
 ### 🛠️ 기술 스택
 - Jdk17
-- Spring Boot 3.2.4
-- Redis 7.2.4
-- MariaDB(latest, 테스트 환경)
-- H2(개발 환경) 2.1.214
-- Docker 25.0.2
-- Prometheus 2.51.1
-- Grafana 10.4.1
-- Gatling 3.11.3
+- Spring Boot 3
+- Redis
+- MariaDB(테스트 환경)
+- H2(개발 환경)
+- Docker
+- Prometheus
+- Grafana
+- Gatling
 
 ---
 
@@ -107,10 +109,17 @@
 - **jwt를 사용하더라도** 토큰 발급은 컨트롤러에서 하고 인증을 시큐리티의 사용자 정의 필터에서 한다면 , **인터셉터와 비슷한 수준**의, 압도적인 성능을 뽑아낼 수 있음을 확인할 수 있었고 요청대비 리소스를 아낄 수 있음을 확인할 수 있었습니다.
 - security의 session방식보다 **security의 jwt방식**이 로그인만 하는 상황에선  약 **120배** , 로그인과 단순 요청을 하는 상황에선 약 **60배** 가량 **더 높은 Throughput**을 확인할 수 있었습니다.
 
+
+
+---
+
+### 🎁 얻게 된 것
+- 로그인 방식별 장단점을 직접 **데이터**로 확인하며 비교할 수 있었습니다.
+- 상황에 맞는 로그인 방식을 저만의 기준을 통해 선택할 수 있게 되었습니다.
+![image](https://github.com/user-attachments/assets/fa881586-5b70-425d-ad92-2e5048327d41)
 ---
 ### ♾️ 관련 링크
 - https://github.com/sami355-24/login_performance_gatling
 - https://github.com/sami355-24/login_performance_nGrinder
 - https://goto-pangyo.tistory.com/279
 - https://goto-pangyo.tistory.com/280
-- https://goto-pangyo.tistory.com/287
