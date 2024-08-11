@@ -31,7 +31,7 @@
 
 6️⃣ [정리](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#%EF%B8%8F-%EC%A0%95%EB%A6%AC)
 
-7️⃣ 
+7️⃣ [얻게 된 것](https://github.com/sami355-24/login_performance_test/blob/main/README.md#-%EC%96%BB%EA%B2%8C-%EB%90%9C-%EA%B2%83)
 
 8️⃣ [관련 링크](https://github.com/sami355-24/login_performance_test?tab=readme-ov-file#%EF%B8%8F-%EA%B4%80%EB%A0%A8-%EB%A7%81%ED%81%AC)
 
